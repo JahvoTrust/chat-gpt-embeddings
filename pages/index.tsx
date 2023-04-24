@@ -20,11 +20,12 @@ export default function Home() {
   const [matchCount, setMatchCount] = useState<number>(5);
   const [apiKey, setApiKey] = useState<string>("");
 
+
   const handleSearch = async () => {
-    if (!apiKey) {
-      alert("Please enter an API key.");
-      return;
-    }
+    // if (!apiKey) {
+    //   alert("Please enter an API key.");
+    //   return;
+    // }
 
     if (!query) {
       alert("Please enter a query.");
@@ -41,7 +42,7 @@ export default function Home() {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ query, apiKey, matches: matchCount })
+      body: JSON.stringify({ query, matches: matchCount  })
     });
 
     if (!searchResponse.ok) {
@@ -61,10 +62,10 @@ export default function Home() {
   };
 
   const handleAnswer = async () => {
-    if (!apiKey) {
-      alert("Please enter an API key.");
-      return;
-    }
+    // if (!apiKey) {
+    //   alert("Please enter an API key.");
+    //   return;
+    // }
 
     if (!query) {
       alert("Please enter a query.");
@@ -145,12 +146,12 @@ export default function Home() {
   };
 
   const handleSave = () => {
-    if (apiKey.length !== 51) {
-      alert("Please enter a valid API key.");
-      return;
-    }
+    // if (apiKey.length !== 51) {
+    //   alert("Please enter a valid API key.");
+    //   return;
+    // }
 
-    localStorage.setItem("PG_KEY", apiKey);
+    // localStorage.setItem("PG_KEY", apiKey);
     localStorage.setItem("PG_MATCH_COUNT", matchCount.toString());
     localStorage.setItem("PG_MODE", mode);
 
@@ -159,7 +160,7 @@ export default function Home() {
   };
 
   const handleClear = () => {
-    localStorage.removeItem("PG_KEY");
+    // localStorage.removeItem("PG_KEY");
     localStorage.removeItem("PG_MATCH_COUNT");
     localStorage.removeItem("PG_MODE");
 
@@ -177,13 +178,13 @@ export default function Home() {
   }, [matchCount]);
 
   useEffect(() => {
-    const PG_KEY = localStorage.getItem("PG_KEY");
+    // const PG_KEY = localStorage.getItem("PG_KEY");
     const PG_MATCH_COUNT = localStorage.getItem("PG_MATCH_COUNT");
     const PG_MODE = localStorage.getItem("PG_MODE");
 
-    if (PG_KEY) {
-      setApiKey(PG_KEY);
-    }
+    // if (PG_KEY) {
+    //   setApiKey(PG_KEY);
+    // }
 
     if (PG_MATCH_COUNT) {
       setMatchCount(parseInt(PG_MATCH_COUNT));
@@ -286,7 +287,8 @@ export default function Home() {
               </div>
             )}
 
-            {apiKey.length === 51 ? (
+            {/* {apiKey.length === 51 ? ( */}
+            { true ? (
               <div className="relative w-full mt-4">
                 <IconSearch className="absolute top-3 w-10 left-1 h-6 rounded-full opacity-50 sm:left-3 sm:top-4 sm:h-8" />
 
